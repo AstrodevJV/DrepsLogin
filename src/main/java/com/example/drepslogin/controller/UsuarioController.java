@@ -38,7 +38,7 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/findemail/{email}")
     public ResponseEntity<UsuarioModel> findByEmail(@PathVariable String email) {
         Optional<UsuarioModel> usuarioModel = usuarioService.findByEmail(email);
         if (usuarioModel.isPresent()) {
