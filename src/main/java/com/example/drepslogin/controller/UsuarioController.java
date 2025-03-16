@@ -47,4 +47,9 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<UsuarioModel> add(@RequestBody UsuarioModel usuarioModel) {
+        return ResponseEntity.ok(usuarioService.save(usuarioModel));
+    }
+
 }
