@@ -23,4 +23,12 @@ public class UsuarioService {
     public Optional<UsuarioModel> findById(Long id) {
         return usuarioRepository.findById(id);
     }
+
+    public Optional<UsuarioModel> findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    public UsuarioModel save(UsuarioModel usuarioModel) {
+        return usuarioRepository.save(usuarioModel);
+    }
 }

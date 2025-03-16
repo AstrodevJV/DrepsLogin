@@ -38,4 +38,13 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/{email}")
+    public ResponseEntity<UsuarioModel> findByEmail(@PathVariable String email) {
+        Optional<UsuarioModel> usuarioModel = usuarioService.findByEmail(email);
+        if (usuarioModel.isPresent()) {
+            return ResponseEntity.ok(usuarioModel.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
