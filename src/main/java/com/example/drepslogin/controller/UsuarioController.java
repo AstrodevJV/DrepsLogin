@@ -48,8 +48,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<UsuarioModel> add(@RequestBody UsuarioModel usuarioModel) {
-        return ResponseEntity.ok(usuarioService.save(usuarioModel));
+    public ResponseEntity<UsuarioModel> add(@RequestBody UsuarioModel usuarioModel, UriComponentsBuilder uriBuilder) {
+        UsuarioModel savedUser = usuarioService.save(usuarioModel);
+
+        URI uri = uriBuilder
+                .path("/api/v1/usuarios/{id}")
+                .buildAndExpand(savedUser.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(savedUser);
     }
 
 }
