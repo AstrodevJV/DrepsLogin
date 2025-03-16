@@ -32,10 +32,8 @@ public class UsuarioController {
     @GetMapping("/findid/{id}")
     public ResponseEntity<UsuarioModel> findById(@PathVariable Long id) {
         Optional<UsuarioModel> usuarioModel = usuarioService.findById(id);
-        if (usuarioModel.isPresent()) {
-            return ResponseEntity.ok(usuarioModel.get());
-        }
-        return ResponseEntity.notFound().build();
+
+        return usuarioModel.isPresent() ? ResponseEntity.ok(usuarioModel.get()) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/findemail/{email}")
