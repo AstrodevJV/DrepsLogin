@@ -29,7 +29,7 @@ public class UsuarioController {
         return usuarioService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findid/{id}")
     public ResponseEntity<UsuarioModel> findById(@PathVariable Long id) {
         Optional<UsuarioModel> usuarioModel = usuarioService.findById(id);
         if (usuarioModel.isPresent()) {
